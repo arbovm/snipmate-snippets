@@ -16,7 +16,7 @@ namespace :snippets_dir do
 end
 
 desc "Copy the snippets directories into ~/.vim/snippets"
-task :deploy_local => ["snippets_dir:purge"] do
+task :install => ["snippets_dir:purge"] do
   Dir.foreach(".") do |f|
     cp_r f, @snippets_dir, :verbose => true if File.directory?(f) && f =~ /^[^\.]/
   end
